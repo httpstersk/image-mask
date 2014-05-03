@@ -3,10 +3,6 @@
 > A Polymer element for masking images
 
 
-## Demo
-
-[Check it live!](http://hejty.github.io/image-mask)
-
 ## Install
 
 Install the component using [Bower](http://bower.io/):
@@ -22,13 +18,13 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="bower_components/platform/platform.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
     ```
 
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/image-mask/dist/image-mask.html">
+    <link rel="import" href="image-mask.html">
     ```
 
 3. Start using it!
@@ -39,10 +35,9 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 ## Options
 
-Attribute       | Options       | Default      | Description
----             | ---           | ---          | ---
-`shape`         | *hexagon*     | *circle*     | Create a hexagon mask
-
+Attribute       | Options                                               | Default      | Description
+---             | ---                                                   | ---          | ---
+`shape`         | *circle*, *square*, *hexagon*, *hexagon*, *ios-app*   | *circle*     | -
 
 
 ## Development
