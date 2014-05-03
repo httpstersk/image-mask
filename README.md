@@ -2,7 +2,7 @@
 
 > A Polymer element for masking images
 
-![alt tag](https://raw.githubusercontent.com/hejty/image-mask/master/image-mask-circle-320.gif)
+![alt tag](https://raw.githubusercontent.com/hejty/image-mask/master/image-mask-circle-320.png)
 
 ## Install
 
