@@ -35,9 +35,16 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 ## Options
 
-Attribute       | Options                                               | Default      | Description
----             | ---                                                   | ---          | ---
-`shape`         | *circle*, *square*, *hexagon*, *hexagon*, *ios-app*   | *circle*     | -
+Attribute       | Options                                               | Default                       | Description
+---             | ---                                                   | ---                           | ---
+`shape`         | *circle*, *square*, *hexagon*, *hexagon*, *ios-app*   | *circle*                      | -
+---             | ---                                                   | ---                           | ---
+`size`          | -                                                     | *320*                         | -
+---             | ---                                                   | ---                           | ---
+`src`           | -                                                     | *http://placehold.it/320*     | -
+---             | ---                                                   | ---                           | ---
+`href`          | optional                                              | *#*     | -
+---             | ---                                                   | ---                           | ---
 
 
 ## Development
