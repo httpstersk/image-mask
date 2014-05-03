@@ -8,7 +8,7 @@
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install image-mask --save
+$ bower install https://github.com/hejty/image-mask.git
 ```
 
 Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
