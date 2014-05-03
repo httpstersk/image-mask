@@ -33,14 +33,18 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
     <image-mask></image-mask>
     ```
 
+    ```html
+    <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.polymer-project.org/"></image-mask>
+    ```
+
 ## Options
 
 Attribute       | Options                                               | Default                       | Description
 ---             | ---                                                   | ---                           | ---
-`shape`         | *circle*, *square*, *hexagon*, *hexagon*, *ios-app*   | *circle*                      | -
-`size`          | -                                                     | *320*                         | -
-`src`           | -                                                     | *http://placehold.it/320*     | -
-`href`          | optional                                              | *#*                           | -
+`shape`         | `circle`, `square`, `hexagon`, `hexagon`, `ios-app`   | `circle`                      | -
+`size`          | *int*                                                 | `320`                         | -
+`src`           | *string*                                              | `http://placehold.it/320`     | -
+`href`          | *string*                                              | `#`                           | -
 
 
 ## Development
