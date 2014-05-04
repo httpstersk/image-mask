@@ -38,10 +38,10 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 Attribute       | Options                                                   | Default                       | Description
 ---             | ---                                                       | ---                           | ---
-`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | Shape 
+`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | Masking shape 
 `size`          | *int*                                                     | `320`                         | Size of the masking object
 `src`           | *string*                                                  | `http://placehold.it/320`     | Source URL of the image
-`href`          | *string*                                                  | `#`                           | The URL associated with the image 
+`href`          | *string*                                                  | `#`                           | The URL link
 
 ## Examples
 
