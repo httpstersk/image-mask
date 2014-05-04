@@ -2,14 +2,14 @@
 
 > A Polymer element for masking images
 
-![alt tag](https://raw.githubusercontent.com/hejty/image-mask/master/image-mask-circle-320.png)
+![alt tag](http://www.hejty.com/github/image-mask-circle-320.png)
 
 ## Install
 
 Install the component using [Bower](http://bower.io/):
 
 ```sh
-$ bower install https://github.com/hejty/image-mask.git
+$ bower install image-mask --save
 ```
 
 Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
@@ -34,19 +34,20 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
     <image-mask></image-mask>
     ```
 
+## Options
+
+Attribute       | Options                                                   | Default                       | Description
+---             | ---                                                       | ---                           | ---
+`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | Shape 
+`size`          | *int*                                                     | `320`                         | Size of the masking object
+`src`           | *string*                                                  | `http://placehold.it/320`     | Source URL of the image
+`href`          | *string*                                                  | `#`                           | The URL associated with the image 
+
+## Examples
+
     ```html
     <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.polymer-project.org/"></image-mask>
     ```
-
-## Options
-
-Attribute       | Options                                               | Default                       | Description
----             | ---                                                   | ---                           | ---
-`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`   | `circle`                      | -
-`size`          | *int*                                                 | `320`                         | -
-`src`           | *string*                                              | `http://placehold.it/320`     | -
-`href`          | *string*                                              | `#`                           | -
-
 
 ## Contributing
 
@@ -54,6 +55,7 @@ Attribute       | Options                                               | Defaul
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
 ## History
 
