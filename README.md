@@ -44,12 +44,15 @@ Attribute       | Options                                                   | De
 `href`          | *string*                                                  | `#`                           | The target URL
 
 
+<<<<<<< HEAD
 
 ## Examples:
 
     <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.google.com/"></image-mask>
     ```
 
+=======
+>>>>>>> 0290935c817f0f774dd3008d69e2219465f10d48
 ## Contributing
 
 1. Fork it!
