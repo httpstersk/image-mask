@@ -43,7 +43,9 @@ Attribute       | Options                                                   | De
 `src`           | *string*                                                  | `http://placehold.it/320`     | The source URL of the image
 `href`          | *string*                                                  | `#`                           | The target URL
 
-3. Exxamples
+
+
+## Examples:
 
     ```html
     <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.google.com/"></image-mask>
