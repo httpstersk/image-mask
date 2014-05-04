@@ -47,7 +47,6 @@ Attribute       | Options                                                   | De
 
 ## Examples:
 
-    ```html
     <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.google.com/"></image-mask>
     ```
 
