@@ -38,15 +38,15 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 Attribute       | Options                                                   | Default                       | Description
 ---             | ---                                                       | ---                           | ---
-`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | Masking shape 
-`size`          | *int*                                                     | `320`                         | Size of the masking object
-`src`           | *string*                                                  | `http://placehold.it/320`     | Source URL of the image
-`href`          | *string*                                                  | `#`                           | The URL link
+`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | The masking shape 
+`size`          | *int*                                                     | `320`                         | The size of the masking object
+`src`           | *string*                                                  | `http://placehold.it/320`     | The source URL of the image
+`href`          | *string*                                                  | `#`                           | The target URL
 
-## Examples
+3. Exxamples
 
     ```html
-    <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.polymer-project.org/"></image-mask>
+    <image-mask shape="circle" size="400" src="eric-bidelman.jpg" href="http://www.google.com/"></image-mask>
     ```
 
 ## Contributing
