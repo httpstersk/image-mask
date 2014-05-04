@@ -4,6 +4,10 @@
 
 ![alt tag](http://www.hejty.com/github/image-mask-circle-320.png)
 
+## Demo
+
+[Check it live!](http://www.hejty.com/github/image-mask/demo.html)
+
 ## Install
 
 Install the component using [Bower](http://bower.io/):
@@ -25,7 +29,7 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="image-mask.html">
+    <link rel="import" href="src/image-mask.html">
     ```
 
 3. Start using it!
