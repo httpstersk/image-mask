@@ -6,7 +6,7 @@
 
 ## Demo
 
-[Check it live!](http://www.hejty.com/github/image-mask/demo.html)
+[Check it live!](http://hejty.github.io/hejty/image-mask/)
 
 ## Install
 
