@@ -1,6 +1,6 @@
 <link rel="import" href="../../polymer/polymer.html">
 
-<polymer-element name="image-mask" attributes="shape size src href">
+<polymer-element name="image-mask" attributes="shape size src href title">
 	<template>
 	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">		
 			<g>
@@ -32,7 +32,7 @@
 
 				</clipPath>
 			</g>
-			<a xlink:href="{{href}}" id="link">
+			<a xlink:href="{{href}}" id="link" xlink:title="{{title}}">
 				<image clip-path="url(#{{shape}})" height="100%" width="100%" xlink:href="{{src}}"  preserveAspectRatio="xMidYMin slice" />
 			</a>
 		</svg>

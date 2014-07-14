@@ -46,6 +46,7 @@ Attribute       | Options                                                   | De
 `size`          | *int*                                                     | `320`                         | The size of the masking object
 `src`           | *string*                                                  | `http://placehold.it/320`     | The source URL of the image
 `href`          | *string*                                                  | `#`                           | The target URL
+`title`         | *string*                                                  | `""`                          | Mask title
 
 ## Contributing
 
