@@ -4,7 +4,7 @@
 	<template>
 	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">		
 			<g>
-				<clipPath id="{{shape}}">
+				<clipPath id="{{maskId}}">
 
 				    <template if="{{shape == 'circle'}}">
 						<circle r="50%" cx="50%" cy="50%"/>
@@ -33,7 +33,7 @@
 				</clipPath>
 			</g>
 			<a xlink:href="{{href}}" id="link" xlink:title="{{title}}">
-				<image clip-path="url(#{{shape}})" height="100%" width="100%" xlink:href="{{src}}"  preserveAspectRatio="xMidYMin slice" />
+				<image clip-path="url(#{{maskId}})" height="100%" width="100%" xlink:href="{{src}}"  preserveAspectRatio="xMidYMin slice" />
 			</a>
 		</svg>
     </template>
@@ -42,6 +42,7 @@
 			shape: "circle",
 			size: "320",
 			ready: function() {
+				this.maskId = "mask-"+Math.random().toString(36).substr(2, 5);
 				if(!this.href) {
 					this.href = this.$.link.removeAttribute("xlink:href");
 				}
