@@ -1,28 +1,28 @@
 {
-  "name": "image-mask",
-  "version": "0.0.3",
-  "homepage": "https://github.com/hejty/image-mask",
-  "authors": [
-    "Lubos Belak"
-  ],
-  "description": "A Polymer element for masking images",
-  "main": "image-mask.html",
-  "keywords": [
-    "web-components",
-    "polymer",
-    "masking",
-    "svg"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "lib",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "platform": "Polymer/platform#master",
-    "polymer": "Polymer/polymer#master"
-  }
+    "name": "image-mask",
+    "version": "0.0.5",
+    "homepage": "https://github.com/hejty/image-mask",
+    "authors": [
+        "Lubos Belak"
+    ],
+    "description": "A Polymer element for masking the images",
+    "main": "image-mask.html",
+    "keywords": [
+        "web-components",
+        "polymer",
+        "masking",
+        "svg"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "lib",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "platform": "Polymer/platform#master",
+        "polymer": "Polymer/polymer#master"
+    }
 }
