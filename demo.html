@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-
+<!--
+@license
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+	<title>image-mask Demo</title>
 
-	<title>Examples of &lt;image-mask&gt;</title>
-
-	<script src="../platform/platform.js"></script>
-	<link rel="import" href="src/image-mask.html">
+	<script src="../webcomponentsjs/webcomponents.min.js"></script>
+	<link rel="import" href="image-mask.html">
 
 </head>
-<body>
+<body unresolved>
 
-	<image-mask shape="square" size="320" src="http://placehold.it/320/33b779/ffffff" href="http://customelements.io/"></image-mask>
-
-	<image-mask shape="triangle" size="320" src="http://placehold.it/320/e7da66/ffffff" href="http://customelements.io/"></image-mask>
-
-	<image-mask shape="circle" size="320" src="http://placehold.it/320/396ad4/ffffff/1d193d" href="http://customelements.io/"></image-mask>
-
-	<image-mask shape="rhombus" size="320" href="#" title="Rhombus with title"></image-mask>
-
+	<image-mask shape="square" src="http://placehold.it/320/33b779/ffffff"></image-mask>
+	<image-mask shape="triangle" src="http://placehold.it/320/e7da66/ffffff"></image-mask>
+	<image-mask shape="circle" src="http://placehold.it/320/396ad4/ffffff"></image-mask>
+	<image-mask shape="rhombus" src="http://placehold.it/320/afaec0/ffffff/"></image-mask>
+	<image-mask shape="parallelogram" src="http://placehold.it/320/d899c0/ffffff/"></image-mask>
+	<image-mask shape="hexagon" src="http://hejty.github.io/hejty/image-mask/adrianne-ho.gif"></image-mask>
+	<image-mask shape="star" size="320" src="http://placehold.it/320/FFBFA0/ffffff/" href="#" title="Image with a title" desc="Immage with a looooong description"></image-mask>
 
 </body>
 </html>

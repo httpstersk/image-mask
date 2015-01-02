@@ -1,6 +1,6 @@
 # &lt;image-mask&gt;
 
-> A Polymer element for masking images
+> A Polymer element for masking the images with basic (and some extraordinary) geometric shap
 
 ![alt tag](http://www.hejty.com/github/image-mask-circle-320.png)
 
@@ -23,13 +23,13 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.5.2/webcomponents.min.js"></script>
     ```
 
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="src/image-mask.html">
+    <link rel="import" href="image-mask/image-mask.html">
     ```
 
 3. Start using it!
@@ -40,13 +40,14 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 ## Options
 
-Attribute       | Options                                                   | Default                       | Description
----             | ---                                                       | ---                           | ---
-`shape`         | `circle`, `square`, `hexagon`, `triangle`, `ios-app`      | `circle`                      | The masking shape 
-`size`          | *int*                                                     | `320`                         | The size of the masking object
-`src`           | *string*                                                  | `http://placehold.it/320`     | The source URL of the image
-`href`          | *string*                                                  | `#`                           | The target URL
-`title`         | *string*                                                  | `""`                          | Mask title
+Attribute       | Options                                                                                   | Default                       | Description
+---             | ---                                                                                       | ---                           | ---
+`shape`         | `circle`, `triangle`, `square`, `hexagon`, `star`, `rhombus`, `parallelogram`, `ios-app`  | `circle`                      | The masking shape
+`size`          | *int*                                                                                     | `320`                         | The size of the masking object
+    `src`           | *string*                                                                              | `http://placehold.it/320`     | The source URL of the image
+`href`          | *string*                                                                                  | `#`                           | The target URL
+`title`         | *string*                                                                                  | `""`                          | A title of an image
+`desc`          | *string*                                                                                  | `""`                          | A long description of an image
 
 ## Contributing
 
@@ -54,7 +55,7 @@ Attribute       | Options                                                   | De
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+5. Submit a pull request ;)
 
 ## History
 

@@ -1,6 +1,20 @@
-<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
+
+##### Example
+
+<image-mask shape="circle" size="320" src="img/image.jpg" href="#" title="A title of an image" desc="A long description of an image"></image-mask>
+
+@element image-mask
+@blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
+@status beta
+@homepage https://github.com/hejty/image-mask
+-->
 
 <polymer-element name="image-mask" attributes="shape size src href title desc">
+
 	<template>
 	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
 			<title id="title">{{title}}</title>
@@ -47,21 +61,43 @@
 			</a>
 		</svg>
     </template>
+
     <script>
         Polymer("image-mask", {
+			/**
+			* The `shape` attribute sets a masking shape for the image
+			*
+			* @attribute shape
+			* @type string
+			* @default 'circle'
+			*/
 			shape: "circle",
-			size: "320",
+
+			/**
+			* The `size` attribute sets an initial size of element
+			*
+			* @attribute size
+			* @type int
+			* @default 320
+			*/
+			size: 320,
+
+			// Fires when the `<image-mask>` has been fully prepared
 			ready: function() {
+				// Generate unique `id` for clipPath tag to deal with another intance of `image-mask` element on the page
 				this.maskId = "mask-" + Math.random().toString(36).substr(2, 5);
 
+				// Remove link target attribute if an `href` attribute is not defined
 				if(!this.href) {
 					this.href = this.$.link.removeAttribute("xlink:href");
 				}
 
+				// Set a placeholder image if an `src` attribute is not defined
 				if(!this.src) {
 					this.src = "http://placehold.it/" + this.size;
 				}
 			}
 		});
     </script>
+
 </polymer-element>

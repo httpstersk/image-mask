@@ -1,11 +1,11 @@
 {
     "name": "image-mask",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "homepage": "https://github.com/hejty/image-mask",
     "authors": [
         "Lubos Belak"
     ],
-    "description": "A Polymer element for masking the images",
+    "description": "A Polymer element for masking the images with basic (and some extraordinary) geometric shapes",
     "main": "image-mask.html",
     "keywords": [
         "web-components",
