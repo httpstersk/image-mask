@@ -5,7 +5,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 ##### Example
 
-<image-mask shape="circle" size="320" src="img/image.jpg" href="#" title="A title of an image" desc="A long description of an image"></image-mask>
+<image-mask shape="circle" size="320" src="img/image.jpg" href="#" title="A short description of an image" desc="A long description of an image"></image-mask>
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
@@ -59,18 +59,18 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
     </template>
 
     <script>
-        Polymer("image-mask", {
+        Polymer('image-mask', {
 			/**
-			* The `shape` attribute sets a masking shape for the image
+			* The `shape` attribute sets a masking shape
 			*
 			* @attribute shape
 			* @type string
 			* @default 'circle'
 			*/
-			shape: "circle",
+			shape: 'circle',
 
 			/**
-			* The `size` attribute sets an initial size of element
+			* The `size` attribute sets a size of element
 			*
 			* @attribute size
 			* @type int
@@ -78,19 +78,50 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			*/
 			size: 320,
 
+			/**
+			*  The `src` attribute defines a path to an image that will be masked
+			*
+			* @attribute src
+			* @type string
+			* @default http://placehold.it/320
+			*/
+			src: 'http://placehold.it/' + this.size,
+
+			/**
+			*  The `href` attribute sets
+			*
+			* @attribute href
+			* @type string
+			* @default
+			*/
+			href: null,
+
+			/**
+			*  The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
+			*
+			* @attribute title
+			* @type string
+			* @default
+			*/
+			title: '',
+
+			/**
+			*  The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
+			*
+			* @attribute desc
+			* @type string
+			* @default
+			*/
+			desc: '',
+
 			// Fires when the `<image-mask>` has been fully prepared
 			ready: function() {
 				// Generate unique `id` for clipPath tag to deal with another intance of `image-mask` element on the page
-				this.maskId = "mask-" + Math.random().toString(36).substr(2, 5);
+				this.maskId = 'mask-' + Math.random().toString(36).substr(2, 5);
 
 				// Remove link target attribute if an `href` attribute is not defined
 				if(!this.href) {
-					this.href = this.$.link.removeAttribute("xlink:href");
-				}
-
-				// Set a placeholder image if an `src` attribute is not defined
-				if(!this.src) {
-					this.src = "http://placehold.it/" + this.size;
+					this.href = this.$.link.removeAttribute('xlink:href');
 				}
 			}
 		});
