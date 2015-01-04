@@ -13,10 +13,10 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 @homepage https://github.com/hejty/image-mask
 -->
 
-<polymer-element name="image-mask" attributes="shape size src href title desc">
+<polymer-element name="image-mask" attributes="shape size src href title desc letter">
 
 	<template>
-	    <svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
+		<svg width="{{size}}" height="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
 			<title id="title">{{title}}</title>
 			<desc id="desc">{{desc}}</desc>
 
@@ -49,6 +49,10 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 					<template if="{{shape == 'parallelogram'}}">
 						<polygon points="{{size/4}},0 {{size}},0 {{size/1.33}},{{size}} 0,{{size}}" />
 					</template>
+
+					<template if="{{shape == 'letter'}}">
+						<text x="50%" y="50%" text-anchor="middle" font-size="{{size}}" dominant-baseline="central">{{letter}}</text>
+					</template>
 				</clipPath>
 			</defs>
 
@@ -56,7 +60,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 				<image clip-path="url(#{{maskId}})" height="100%" width="100%" xlink:href="{{src}}" preserveAspectRatio="xMidYMid slice" />
 			</a>
 		</svg>
-    </template>
+	</template>
 
     <script>
         Polymer('image-mask', {
@@ -85,7 +89,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			* @type string
 			* @default http://placehold.it/320
 			*/
-			src: 'http://placehold.it/' + this.size,
+			src: 'http://placehold.it/320',
 
 			/**
 			*  The `href` attribute sets the target URL
