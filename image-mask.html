@@ -50,6 +50,11 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 						<polygon points="{{size/4}},0 {{size}},0 {{size/1.33}},{{size}} 0,{{size}}" />
 					</template>
 
+					<template if="{{shape == 'plus'}}">
+						<polygon points="{{size}},{{size/3}} {{size/1.5}},{{size/3}} {{size/1.5}},0 {{size/3}},0 {{size/3}},{{size/3}} 0,{{size/3}} 0,{{size/1.5}} {{size/3}},{{size/1.5}} {{size/3}},{{size}} {{size/1.5}},{{size}} {{size/1.5}},{{size/1.5}}
+						{{size}},{{size/1.5}}" />
+					</template>
+
 					<template if="{{shape == 'letter'}}">
 						<text x="50%" y="50%" text-anchor="middle" font-size="{{size}}" dominant-baseline="central">{{letter}}</text>
 					</template>
