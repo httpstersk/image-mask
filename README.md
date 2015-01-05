@@ -37,10 +37,6 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
     ```html
     <image-mask></image-mask>
     ```
-    
-    ```html
-    <image-mask shape="circle" size="320" src="img/image.jpg" href="#" title="A short description of an image" desc="A long description of an image"></image-mask>
-    ```
 
 ## Options
 
@@ -52,6 +48,12 @@ Attribute       | Options                                                       
 `href`          | *string*                                                                                          | `-`                          | The `href` attribute sets the target URL
 `title`         | *string*                                                                                          | `-`                          | The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
 `desc`          | *string*                                                                                          | `-`                          | The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
+
+## Example
+
+```html
+<image-mask shape="circle" size="320" src="img/image.jpg" href="#" title="A short description of an image" desc="A long description of an image"></image-mask>
+```
 
 ## Contributing
 
