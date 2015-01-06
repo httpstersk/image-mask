@@ -123,14 +123,18 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			*/
 			desc: '',
 
+			// Fires when an instance of `<image-mask>` is created
+			created: function() {
+				// Generate unique `id` for clipPath tag to deal with another intance of `<image-mask>` on the page
+				this.maskId = 'mask-' + Math.random().toString(36).substr(2, 5);
+			},
+
 			// Fires when the `<image-mask>` has been fully prepared
 			ready: function() {
-				// Generate unique `id` for clipPath tag to deal with another intance of `image-mask` element on the page
-				this.maskId = 'mask-' + Math.random().toString(36).substr(2, 5);
-
-				// Remove link target attribute if an `href` attribute is not defined
+				// Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
 				if(!this.href) {
-					this.href = this.$.link.removeAttribute('xlink:href');
+					var wrapper = this.$.link;
+					wrapper.outerHTML = wrapper.innerHTML;
 				}
 			}
 		});
