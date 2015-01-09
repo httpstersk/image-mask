@@ -16,7 +16,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 <polymer-element name="image-mask" attributes="shape size src href title desc letter">
 
 	<template>
-		<svg style="max-width: {{size}}px" height="100%" width="100%" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
+		<svg height="{{size}}" width="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
 			<title id="title">{{title}}</title>
 			<desc id="desc">{{desc}}</desc>
 
@@ -40,6 +40,10 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 					<template if="{{shape == 'hexagon'}}">
 						<polygon points="{{size/1.155}},{{size/1.33}} {{size/2.3}},{{size}} 0,{{size/1.33}} 0,{{size/4}} {{size/2.3}},0 {{size/1.155}},{{size/4}}" />
+					</template>
+
+					<template if="{{shape == 'octagon'}}">
+						<polygon points="{{size/3.415}},{{size}} 0,{{size/1.414}} 0,{{size/3.415}} {{size/3.415}},0 {{size/1.414}},0 {{size}},{{size/3.415}} {{size}},{{size/1.414}} {{size/1.414}},{{size}}" />
 					</template>
 
 					<template if="{{shape == 'star'}}">
@@ -79,7 +83,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			shape: 'circle',
 
 			/**
-			* The `size` attribute sets a size of element
+			* The `size` attribute sets a size of an element
 			*
 			* @attribute size
 			* @type int
@@ -101,7 +105,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			*
 			* @attribute href
 			* @type string
-			* @default
+			* @default null
 			*/
 			href: null,
 
@@ -110,7 +114,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			*
 			* @attribute title
 			* @type string
-			* @default
+			* @default ''
 			*/
 			title: '',
 
@@ -119,7 +123,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 			*
 			* @attribute desc
 			* @type string
-			* @default
+			* @default ''
 			*/
 			desc: '',
 
