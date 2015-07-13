@@ -13,135 +13,231 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 @homepage https://github.com/hejty/image-mask
 -->
 
-<polymer-element name="image-mask" attributes="shape size src href title desc letter">
+<dom-module id="image-mask">
 
-	<template>
-		<svg height="{{size}}" width="{{size}}" viewBox="0 0 {{size}} {{size}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
-			<title id="title">{{title}}</title>
-			<desc id="desc">{{desc}}</desc>
+  <template>
 
-			<defs>
-				<clipPath id="{{maskId}}">
-					<template if="{{shape == 'circle'}}">
-						<circle r="50%" cx="50%" cy="50%"/>
-					</template>
+    <svg height$="{{size}}" width$="{{size}}" viewBox$="{{getViewBox(size)}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" role="img" aria-labelledby="title desc">
+      <title id="title">
+        <span>[[title]]</span>
+      </title>
+      <desc id="desc">
+        <span>[[desc]]</span>
+      </desc>
 
-					<template if="{{shape == 'triangle'}}">
-						<polygon points="0,{{size}} {{size/2}},0 {{size}},{{size}}" />
-					</template>
+      <defs>
+        <clipPath id="circle">
+          <template is="dom-if" if="{{shapes.circle}}" id="circle">
+            <circle r="50%" cx="50%" cy="50%" />
+          </template>
 
-					<template if="{{shape == 'square'}}">
-						<rect x="0" y="0" width="{{size}}" height="{{size}}" />
-					</template>
+          <!--
+					<template is="dom-if" if="{{shapes.triangle}}" id="triangle">
+	          <polygon points$="0,{{size}} {{size/2}},0 {{size}},{{size}}" />
+	        </template>
 
-					<template if="{{shape == 'rhombus'}}">
-						<polygon points="{{size}},{{size/2}} {{size/2}},{{size}} 0,{{size/2}} {{size/2}},0" />
-					</template>
+					<template is="dom-if" if="{{shapes.square}}" id="square">
+	          <rect x="0" y="0" width$="{{size}}" height$="{{size}}" />
+	        </template>
 
-					<template if="{{shape == 'hexagon'}}">
-						<polygon points="{{size/1.155}},{{size/1.33}} {{size/2.3}},{{size}} 0,{{size/1.33}} 0,{{size/4}} {{size/2.3}},0 {{size/1.155}},{{size/4}}" />
-					</template>
+					<template is="dom-if" if="{{shapes.rhombus}}" id="rhombus">
+            <polygon points$="{{size}},{{size/2}} {{size/2}},{{size}} 0,{{size/2}} {{size/2}},0" />
+          </template>
 
-					<template if="{{shape == 'octagon'}}">
-						<polygon points="{{size/3.415}},{{size}} 0,{{size/1.414}} 0,{{size/3.415}} {{size/3.415}},0 {{size/1.414}},0 {{size}},{{size/3.415}} {{size}},{{size/1.414}} {{size/1.414}},{{size}}" />
-					</template>
+					<template is="dom-if" if="{{shapes.hexagon}}" id="hexagon">
+            <polygon points$="{{size/1.155}},{{size/1.33}} {{size/2.3}},{{size}} 0,{{size/1.33}} 0,{{size/4}} {{size/2.3}},0 {{size/1.155}},{{size/4}}" />
+          </template>
 
-					<template if="{{shape == 'star'}}">
-						<polygon points="{{size/2}},0 {{size/1.618}},{{size/2.752}} {{size}},{{size/2.752}} {{size/1.447}},{{size/1.701}} {{size/1.236}},{{size/1.051}} {{size/2}},{{size/1.376}} {{size/5.236}},{{size/1.051}} {{size/3.236}},{{size/1.701}} 0,{{size/2.752}} {{size/2.618}},{{size/2.752}}" />
-					</template>
+					<template is="dom-if" if="{{shapes.octagon}}" id="octagon">
+            <polygon points$="{{size/3.415}},{{size}} 0,{{size/1.414}} 0,{{size/3.415}} {{size/3.415}},0 {{size/1.414}},0 {{size}},{{size/3.415}} {{size}},{{size/1.414}} {{size/1.414}},{{size}}" />
+          </template>
 
-					<template if="{{shape == 'parallelogram'}}">
-						<polygon points="{{size/4}},0 {{size}},0 {{size/1.33}},{{size}} 0,{{size}}" />
-					</template>
+					<template is="dom-if" if="{{shapes.star}}" id="star">
+            <polygon points$="{{size/2}},0 {{size/1.618}},{{size/2.752}} {{size}},{{size/2.752}} {{size/1.447}},{{size/1.701}} {{size/1.236}},{{size/1.051}} {{size/2}},{{size/1.376}} {{size/5.236}},{{size/1.051}} {{size/3.236}},{{size/1.701}} 0,{{size/2.752}} {{size/2.618}},{{size/2.752}}" />
+          </template>
 
-					<template if="{{shape == 'plus'}}">
-						<polygon points="{{size}},{{size/3}} {{size/1.5}},{{size/3}} {{size/1.5}},0 {{size/3}},0 {{size/3}},{{size/3}} 0,{{size/3}} 0,{{size/1.5}} {{size/3}},{{size/1.5}} {{size/3}},{{size}} {{size/1.5}},{{size}} {{size/1.5}},{{size/1.5}}
-						{{size}},{{size/1.5}}" />
-					</template>
+					<template is="dom-if" if="{{shapes.parallelogram}}" id="parallelogram">
+            <polygon points$="{{size/4}},0 {{size}},0 {{size/1.33}},{{size}} 0,{{size}}" />
+          </template>
 
-					<template if="{{shape == 'letter'}}">
-						<text x="50%" y="50%" text-anchor="middle" font-size="{{size}}" dominant-baseline="central">{{letter}}</text>
-					</template>
-				</clipPath>
-			</defs>
+					<template is="dom-if" if="{{shapes.plus}}" id="plus">
+            <polygon points$="{{size}},{{size/3}} {{size/1.5}},{{size/3}} {{size/1.5}},0 {{size/3}},0 {{size/3}},{{size/3}} 0,{{size/3}} 0,{{size/1.5}} {{size/3}},{{size/1.5}} {{size/3}},{{size}} {{size/1.5}},{{size}} {{size/1.5}},{{size/1.5}} {{size}},{{size/1.5}}" />
+          </template>
 
-			<a xlink:href="{{href}}" id="link" xlink:title="{{title}}">
-				<image clip-path="url(#{{maskId}})" height="100%" width="100%" xlink:href="{{src}}" preserveAspectRatio="xMidYMid slice" />
-			</a>
-		</svg>
-	</template>
+					<template is="dom-if" if="{{shapes.letter}}" id="letter">
+            <text x="50%" y="50%" text-anchor="middle" font-size$="{{size}}" dominant-baseline="central">
+              <span>[[letter]]</span>
+            </text>
+          </template> -->
+        </clipPath>
+      </defs>
 
-    <script>
-        Polymer('image-mask', {
-			/**
-			* The `shape` attribute sets a masking shape
-			*
-			* @attribute shape
-			* @type string
-			* @default 'circle'
-			*/
-			shape: 'circle',
+      <a xlink:href$="{{href}}" id="link" xlink:title$="{{title}}">
+        <image clip-path="url(#circle)" height="100%" width="100%" xlink:href$="{{src}}" preserveAspectRatio="xMidYMid slice" />
+      </a>
+    </svg>
 
-			/**
-			* The `size` attribute sets a size of an element
-			*
-			* @attribute size
-			* @type int
-			* @default 320
-			*/
-			size: 320,
+  </template>
 
-			/**
-			*  The `src` attribute defines a path to an image that will be masked
-			*
-			* @attribute src
-			* @type string
-			* @default http://placehold.it/320
-			*/
-			src: 'http://placehold.it/320',
+</dom-module>
 
-			/**
-			*  The `href` attribute sets the target URL
-			*
-			* @attribute href
-			* @type string
-			* @default null
-			*/
-			href: null,
+<script>
+  // Templates inside SVG won't work in Polymer 1.0 without some monkeypatching
+  // https://gist.github.com/bendavis78/15528ca2f501c44f2fa4
+  (function() {
+    var doc = document.currentScript.ownerDocument;
+    var root = doc.querySelector('dom-module > template').content;
+    var templates = root.querySelectorAll('svg template');
+    var el, template, attribs, attrib, count, child, content;
+    for (var i = 0; i < templates.length; i++) {
+      el = templates[i];
+      template = el.ownerDocument.createElement('template');
+      el.parentNode.insertBefore(template, el);
+      attribs = el.attributes;
+      count = attribs.length;
+      while (count-- > 0) {
+        attrib = attribs[count];
+        template.setAttribute(attrib.name, attrib.value);
+        el.removeAttribute(attrib.name);
+      }
+      el.parentNode.removeChild(el);
+      content = template.content;
+      while ((child = el.firstChild)) {
+        content.appendChild(child);
+      }
+    }
+  })();
 
-			/**
-			*  The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
-			*
-			* @attribute title
-			* @type string
-			* @default ''
-			*/
-			title: '',
+  Polymer({
 
-			/**
-			*  The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
-			*
-			* @attribute desc
-			* @type string
-			* @default ''
-			*/
-			desc: '',
+    is: 'image-mask',
 
-			// Fires when an instance of `<image-mask>` is created
-			created: function() {
-				// Generate unique `id` for clipPath tag to deal with another intance of `<image-mask>` on the page
-				this.maskId = 'mask-' + Math.random().toString(36).substr(2, 5);
-			},
+    properties: {
 
-			// Fires when the `<image-mask>` has been fully prepared
-			ready: function() {
-				// Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
-				if(!this.href) {
-					var wrapper = this.$.link;
-					wrapper.outerHTML = wrapper.innerHTML;
-				}
-			}
-		});
-    </script>
+      /**
+       * The `shape` attribute sets a masking shape
+       *
+       * @attribute shape
+       * @type string
+       * @default 'circle'
+       */
 
-</polymer-element>
+      shape: {
+        type: String,
+        value: 'circle',
+        notify: true,
+        reflectToAttribute: true
+      },
+
+      /**
+       * The `size` attribute sets a size of an element
+       *
+       * @attribute size
+       * @type int
+       * @default 320
+       */
+
+      size: {
+        type: Number,
+        value: 320,
+        notify: true,
+        reflectToAttribute: true
+      },
+
+      /**
+       *  The `src` attribute defines a path to an image that will be masked
+       *
+       * @attribute src
+       * @type string
+       * @default http://placehold.it/320
+       */
+
+      src: {
+        type: String,
+        value: 'http://placehold.it/320',
+        notify: true,
+        reflectToAttribute: true
+      },
+
+      /**
+       *  The `href` attribute sets the target URL
+       *
+       * @attribute href
+       * @type string
+       * @default null
+       */
+
+      href: {
+        type: String,
+        value: '',
+        notify: true
+      },
+
+      /**
+       *  The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
+       *
+       * @attribute title
+       * @type string
+       * @default ''
+       */
+
+      title: {
+        type: String,
+        value: '',
+        notify: true
+      },
+
+      /**
+       *  The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
+       *
+       * @attribute desc
+       * @type string
+       * @default ''
+       */
+
+      desc: {
+        type: String,
+        value: '',
+        notify: true
+      },
+
+      maskId: {
+        type: String,
+        computed: 'randomId()'
+      }
+
+    },
+
+    isCircle: function() {
+      if (this.shape == 'circle') {
+        return true;
+      }
+    },
+
+    iconName: function() {
+      return Polymer.dom(this).querySelectorAll('[id]').map(function(icon) {
+        return icon.id;
+      });
+    },
+
+    randomId: function() {
+      return 'mask-' + Math.random().toString(36).substr(2, 5);
+    },
+
+    getViewBox: function(size) {
+      return ['0', '0', this.size, this.size].join(' ');
+    },
+
+    // Fires when the `<image-mask>` has been fully prepared
+    ready: function() {
+      // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
+      if (!this.href) {
+        var wrapper = this.$.link;
+        wrapper.outerHTML = wrapper.innerHTML;
+      }
+
+      this.shapes = {};
+      this.set('shapes.' + this.shape, true);
+    }
+  });
+</script>

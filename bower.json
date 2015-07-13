@@ -1,6 +1,6 @@
 {
     "name": "image-mask",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "homepage": "https://github.com/hejty/image-mask",
     "authors": [
         "Lubos Belak"
@@ -22,7 +22,9 @@
         "tests"
     ],
     "dependencies": {
-        "platform": "Polymer/platform#master",
-        "polymer": "Polymer/polymer#master"
+        "polymer": "Polymer/polymer#^1.0.0"
+    },
+    "devDependencies": {
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
     }
 }
