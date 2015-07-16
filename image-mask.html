@@ -31,9 +31,12 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
             <circle r="0.5" cx="0.5" cy="0.5" />
           </template>
 
-          <!--
+          <template is="dom-if" if="{{shapes.triangle}}" id="triangle">
+	          <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
+	        </template>
+
 					<template is="dom-if" if="{{shapes.triangle}}" id="triangle">
-	          <polygon points$="0,{{size}} {{size/2}},0 {{size}},{{size}}" />
+	          <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
 	        </template>
 
 					<template is="dom-if" if="{{shapes.square}}" id="square">
@@ -41,34 +44,28 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 	        </template>
 
 					<template is="dom-if" if="{{shapes.rhombus}}" id="rhombus">
-            <polygon points$="{{size}},{{size/2}} {{size/2}},{{size}} 0,{{size/2}} {{size/2}},0" />
+            <polygon points="0.5 0, 1 0.5, 0.5 1, 0 0.5" />
           </template>
 
 					<template is="dom-if" if="{{shapes.hexagon}}" id="hexagon">
-            <polygon points$="{{size/1.155}},{{size/1.33}} {{size/2.3}},{{size}} 0,{{size/1.33}} 0,{{size/4}} {{size/2.3}},0 {{size/1.155}},{{size/4}}" />
+            <polygon points="0.5 0, 1 0.25, 1 0.75, 0.5 1, 0 0.75, 0 0.25" />
           </template>
 
 					<template is="dom-if" if="{{shapes.octagon}}" id="octagon">
-            <polygon points$="{{size/3.415}},{{size}} 0,{{size/1.414}} 0,{{size/3.415}} {{size/3.415}},0 {{size/1.414}},0 {{size}},{{size/3.415}} {{size}},{{size/1.414}} {{size/1.414}},{{size}}" />
+            <polygon points="0.3 0, 0.7 0, 1 0.3, 1 0.7, 0.7 1, 0.3 1, 0 0.7, 0 0.3" />
           </template>
 
 					<template is="dom-if" if="{{shapes.star}}" id="star">
-            <polygon points$="{{size/2}},0 {{size/1.618}},{{size/2.752}} {{size}},{{size/2.752}} {{size/1.447}},{{size/1.701}} {{size/1.236}},{{size/1.051}} {{size/2}},{{size/1.376}} {{size/5.236}},{{size/1.051}} {{size/3.236}},{{size/1.701}} 0,{{size/2.752}} {{size/2.618}},{{size/2.752}}" />
+            <polygon points="0.5 0, 0.63 0.38, 1 0.38, 0.69 0.59, 0.82 1, 0.5 0.75, 0.18 1, 0.31 0.59, 0 0.38, 0.37 0.38" />
           </template>
 
 					<template is="dom-if" if="{{shapes.parallelogram}}" id="parallelogram">
-            <polygon points$="{{size/4}},0 {{size}},0 {{size/1.33}},{{size}} 0,{{size}}" />
+            <polygon points="0 1, 0.25 0, 1 0, 0.75 1, 0 1" />
           </template>
 
 					<template is="dom-if" if="{{shapes.plus}}" id="plus">
-            <polygon points$="{{size}},{{size/3}} {{size/1.5}},{{size/3}} {{size/1.5}},0 {{size/3}},0 {{size/3}},{{size/3}} 0,{{size/3}} 0,{{size/1.5}} {{size/3}},{{size/1.5}} {{size/3}},{{size}} {{size/1.5}},{{size}} {{size/1.5}},{{size/1.5}} {{size}},{{size/1.5}}" />
+            <polygon points="0 0.33, 0.33 0.33, 0.33 0, 0.66 0, 0.66 0.33, 1 0.33, 1 0.66, 0.66 0.66, 0.66 1, 0.33 1, 0.33 0.66, 0 0.66" />
           </template>
-
-					<template is="dom-if" if="{{shapes.letter}}" id="letter">
-            <text x="50%" y="50%" text-anchor="middle" font-size$="{{size}}" dominant-baseline="central">
-              <span>[[letter]]</span>
-            </text>
-          </template> -->
         </clipPath>
       </defs>
 
