@@ -6,7 +6,7 @@
 
 ## Demo
 
-[Check it live!](http://hejty.github.io/hejty/image-mask/)
+[Check it live!](http://hejty.github.io/demos/image-mask/)
 
 ## Install
 
@@ -23,7 +23,7 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.5.2/webcomponents.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents.min.js"></script>
     ```
 
 2. Import Custom Element:
@@ -42,7 +42,7 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 Attribute       | Options                                                                                                       | Default                      | Description
 ---             | ---                                                                                                           | ---                          | ---
-`shape`         | `circle`, `triangle`, `square`, `hexagon`, `octagon`, `star`, `rhombus`, `parallelogram`, `plus`, `letter`    | `circle`                     | The `shape` attribute sets a masking shape
+`shape`         | `circle`, `triangle`, `square`, `hexagon`, `octagon`, `star`, `rhombus`, `parallelogram`, `plus`              | `circle`                     | The `shape` attribute sets a masking shape
 `size`          | *int*                                                                                                         | `320`                        | The `size` attribute sets a size of an element
     `src`           | *string*                                                                                                  | `http://placehold.it/320`    | The `src` attribute defines a path to an image that will be masked
 `href`          | *string*                                                                                                      | `-`                          | The `href` attribute sets the target URL
