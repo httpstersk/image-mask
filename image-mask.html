@@ -32,38 +32,38 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
           </template>
 
           <template is="dom-if" if="{{shapes.triangle}}" id="triangle">
-	          <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
-	        </template>
+            <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
+          </template>
 
-					<template is="dom-if" if="{{shapes.triangle}}" id="triangle">
-	          <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
-	        </template>
+          <template is="dom-if" if="{{shapes.triangle}}" id="triangle">
+            <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
+          </template>
 
-					<template is="dom-if" if="{{shapes.square}}" id="square">
-	          <rect x="0" y="0" width$="{{size}}" height$="{{size}}" />
-	        </template>
+          <template is="dom-if" if="{{shapes.square}}" id="square">
+            <rect x="0" y="0" width$="{{size}}" height$="{{size}}" />
+          </template>
 
-					<template is="dom-if" if="{{shapes.rhombus}}" id="rhombus">
+          <template is="dom-if" if="{{shapes.rhombus}}" id="rhombus">
             <polygon points="0.5 0, 1 0.5, 0.5 1, 0 0.5" />
           </template>
 
-					<template is="dom-if" if="{{shapes.hexagon}}" id="hexagon">
+          <template is="dom-if" if="{{shapes.hexagon}}" id="hexagon">
             <polygon points="0.5 0, 1 0.25, 1 0.75, 0.5 1, 0 0.75, 0 0.25" />
           </template>
 
-					<template is="dom-if" if="{{shapes.octagon}}" id="octagon">
+          <template is="dom-if" if="{{shapes.octagon}}" id="octagon">
             <polygon points="0.3 0, 0.7 0, 1 0.3, 1 0.7, 0.7 1, 0.3 1, 0 0.7, 0 0.3" />
           </template>
 
-					<template is="dom-if" if="{{shapes.star}}" id="star">
+          <template is="dom-if" if="{{shapes.star}}" id="star">
             <polygon points="0.5 0, 0.63 0.38, 1 0.38, 0.69 0.59, 0.82 1, 0.5 0.75, 0.18 1, 0.31 0.59, 0 0.38, 0.37 0.38" />
           </template>
 
-					<template is="dom-if" if="{{shapes.parallelogram}}" id="parallelogram">
+          <template is="dom-if" if="{{shapes.parallelogram}}" id="parallelogram">
             <polygon points="0 1, 0.25 0, 1 0, 0.75 1, 0 1" />
           </template>
 
-					<template is="dom-if" if="{{shapes.plus}}" id="plus">
+          <template is="dom-if" if="{{shapes.plus}}" id="plus">
             <polygon points="0 0.33, 0.33 0.33, 0.33 0, 0.66 0, 0.66 0.33, 1 0.33, 1 0.66, 0.66 0.66, 0.66 1, 0.33 1, 0.33 0.66, 0 0.66" />
           </template>
         </clipPath>
@@ -86,19 +86,23 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
     var root = doc.querySelector('dom-module#image-mask > template').content;
     var templates = root.querySelectorAll('svg template');
     var el, template, attribs, attrib, count, child, content;
+
     for (var i = 0; i < templates.length; i++) {
       el = templates[i];
       template = el.ownerDocument.createElement('template');
       el.parentNode.insertBefore(template, el);
       attribs = el.attributes;
       count = attribs.length;
+
       while (count-- > 0) {
         attrib = attribs[count];
         template.setAttribute(attrib.name, attrib.value);
         el.removeAttribute(attrib.name);
       }
+
       el.parentNode.removeChild(el);
       content = template.content;
+
       while ((child = el.firstChild)) {
         content.appendChild(child);
       }
@@ -197,6 +201,14 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         value: '',
         notify: true
       },
+
+      /**
+       *  Unique identifier for clipPath tag to deal with another intance of `<image-mask>` on the page
+       *
+       * @attribute maskId
+       * @type string
+       * @default ''
+       */
 
       maskId: {
         type: String,
