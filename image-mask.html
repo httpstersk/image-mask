@@ -9,7 +9,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
-@status beta
+@version 1.0.0
 @homepage https://github.com/hejty/image-mask
 -->
 
@@ -21,51 +21,14 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
       <title id="title">
         <span>[[title]]</span>
       </title>
+
       <desc id="desc">
         <span>[[desc]]</span>
       </desc>
 
       <defs>
         <clipPath id$="{{maskId}}" clipPathUnits="objectBoundingBox">
-          <template is="dom-if" if="{{shapes.circle}}" id="circle">
-            <circle r="0.5" cx="0.5" cy="0.5" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.triangle}}" id="triangle">
-            <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.triangle}}" id="triangle">
-            <polygon points="0 1, 0.5 0, 0.5 0, 1 1" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.square}}" id="square">
-            <rect x="0" y="0" width$="{{size}}" height$="{{size}}" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.rhombus}}" id="rhombus">
-            <polygon points="0.5 0, 1 0.5, 0.5 1, 0 0.5" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.hexagon}}" id="hexagon">
-            <polygon points="0.5 0, 1 0.25, 1 0.75, 0.5 1, 0 0.75, 0 0.25" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.octagon}}" id="octagon">
-            <polygon points="0.3 0, 0.7 0, 1 0.3, 1 0.7, 0.7 1, 0.3 1, 0 0.7, 0 0.3" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.star}}" id="star">
-            <polygon points="0.5 0, 0.63 0.38, 1 0.38, 0.69 0.59, 0.82 1, 0.5 0.75, 0.18 1, 0.31 0.59, 0 0.38, 0.37 0.38" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.parallelogram}}" id="parallelogram">
-            <polygon points="0 1, 0.25 0, 1 0, 0.75 1, 0 1" />
-          </template>
-
-          <template is="dom-if" if="{{shapes.plus}}" id="plus">
-            <polygon points="0 0.33, 0.33 0.33, 0.33 0, 0.66 0, 0.66 0.33, 1 0.33, 1 0.66, 0.66 0.66, 0.66 1, 0.33 1, 0.33 0.66, 0 0.66" />
-          </template>
+          <path d$="{{path}}" />
         </clipPath>
       </defs>
 
@@ -79,167 +42,179 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 </dom-module>
 
 <script>
-  // Templates inside SVG won't work in Polymer 1.0 without some monkeypatching
-  // https://gist.github.com/bendavis78/15528ca2f501c44f2fa4
   (function() {
-    var doc = document.currentScript.ownerDocument;
-    var root = doc.querySelector('dom-module#image-mask > template').content;
-    var templates = root.querySelectorAll('svg template');
-    var el, template, attribs, attrib, count, child, content;
 
-    for (var i = 0; i < templates.length; i++) {
-      el = templates[i];
-      template = el.ownerDocument.createElement('template');
-      el.parentNode.insertBefore(template, el);
-      attribs = el.attributes;
-      count = attribs.length;
+    Polymer({
 
-      while (count-- > 0) {
-        attrib = attribs[count];
-        template.setAttribute(attrib.name, attrib.value);
-        el.removeAttribute(attrib.name);
+      is: 'image-mask',
+
+      properties: {
+
+        /**
+         * The `shape` attribute sets a masking shape
+         *
+         * @attribute shape
+         * @type string
+         * @default 'circle'
+         */
+
+        shape: {
+          type: String,
+          value: 'circle',
+          notify: true,
+          reflectToAttribute: true,
+          observer: 'getPath'
+        },
+
+        /**
+         * The `size` attribute sets a size of an element
+         *
+         * @attribute size
+         * @type int
+         * @default 320
+         */
+
+        size: {
+          type: Number,
+          value: 320,
+          notify: true,
+          reflectToAttribute: true
+        },
+
+        /**
+         *  The `src` attribute defines a path to an image that will be masked
+         *
+         * @attribute src
+         * @type string
+         * @default http://placehold.it/320
+         */
+
+        src: {
+          type: String,
+          value: 'http://placehold.it/320',
+          notify: true,
+          reflectToAttribute: true
+        },
+
+        /**
+         *  The `href` attribute sets the target URL
+         *
+         * @attribute href
+         * @type string
+         * @default null
+         */
+
+        href: {
+          type: String,
+          value: '',
+          notify: true
+        },
+
+        /**
+         *  The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
+         *
+         * @attribute title
+         * @type string
+         * @default ''
+         */
+
+        title: {
+          type: String,
+          value: '',
+          notify: true
+        },
+
+        /**
+         *  The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
+         *
+         * @attribute desc
+         * @type string
+         * @default ''
+         */
+
+        desc: {
+          type: String,
+          value: '',
+          notify: true
+        },
+
+        /**
+         *  Unique identifier for clipPath tag to deal with another intance of `<image-mask>` on the page
+         *
+         * @attribute maskId
+         * @type string
+         * @default ''
+         */
+
+        maskId: {
+          type: String,
+          computed: 'randomId(shape)',
+          notify: true
+        }
+
+      },
+
+      randomId: function(shape) {
+        return shape + '-' + Math.random().toString(36).substr(2, 4);
+      },
+
+      getViewBox: function(size) {
+        return ['0', '0', size, size].join(' ');
+      },
+
+      getClipPath: function(maskId) {
+        return 'url(#' + maskId + ')';
+      },
+
+      getPath: function() {
+        switch (this.shape) {
+          case 'circle':
+            this.path = 'M 0.5, 0.5 m -0.5, 0 a 0.5, 0.5 0 1, 0 1, 0 a 0.5, 0.5 0 1, 0 -1, 0';
+            break;
+
+          case 'square':
+            this.path = 'M 0 0, 1 0, 1 1, 0 1 z';
+            break;
+
+          case 'triangle':
+            this.path = 'M 0 1, 0.5 0, 0.5 0, 1 1 z';
+            break;
+
+          case 'rhombus':
+            this.path = 'M 0.5 0, 1 0.5, 0.5 1, 0 0.5 z';
+            break;
+
+          case 'heaxagon':
+            this.path = 'M 0.5 0, 1 0.25, 1 0.75, 0.5 1, 0 0.75, 0 0.25 z';
+            break;
+
+          case 'octagon':
+            this.path = 'M 0.3 0, 0.7 0, 1 0.3, 1 0.7, 0.7 1, 0.3 1, 0 0.7, 0 0.3 z';
+            break;
+
+          case 'star':
+            this.path = 'M 0.5 0, 0.63 0.38, 1 0.38, 0.69 0.59, 0.82 1, 0.5 0.75, 0.18 1, 0.31 0.59, 0 0.38, 0.37 0.38 z';
+            break;
+
+          case 'parallelogram':
+            this.path = 'M 0 1, 0.25 0, 1 0, 0.75 1, 0 1 z';
+            break;
+
+          case 'plus':
+            this.path = 'M 0 0.33, 0.33 0.33, 0.33 0, 0.66 0, 0.66 0.33, 1 0.33, 1 0.66, 0.66 0.66, 0.66 1, 0.33 1, 0.33 0.66, 0 0.66 z';
+            break;
+        }
+      },
+
+      // Fires when the `<image-mask>` has been fully prepared
+      ready: function() {
+        // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
+        if (!this.href) {
+          var wrapper = this.$.link;
+          wrapper.outerHTML = wrapper.innerHTML;
+        }
       }
+    });
 
-      el.parentNode.removeChild(el);
-      content = template.content;
-
-      while ((child = el.firstChild)) {
-        content.appendChild(child);
-      }
-    }
   })();
-
-  Polymer({
-
-    is: 'image-mask',
-
-    properties: {
-
-      /**
-       * The `shape` attribute sets a masking shape
-       *
-       * @attribute shape
-       * @type string
-       * @default 'circle'
-       */
-
-      shape: {
-        type: String,
-        value: 'circle',
-        notify: true,
-        reflectToAttribute: true
-      },
-
-      /**
-       * The `size` attribute sets a size of an element
-       *
-       * @attribute size
-       * @type int
-       * @default 320
-       */
-
-      size: {
-        type: Number,
-        value: 320,
-        notify: true,
-        reflectToAttribute: true
-      },
-
-      /**
-       *  The `src` attribute defines a path to an image that will be masked
-       *
-       * @attribute src
-       * @type string
-       * @default http://placehold.it/320
-       */
-
-      src: {
-        type: String,
-        value: 'http://placehold.it/320',
-        notify: true,
-        reflectToAttribute: true
-      },
-
-      /**
-       *  The `href` attribute sets the target URL
-       *
-       * @attribute href
-       * @type string
-       * @default null
-       */
-
-      href: {
-        type: String,
-        value: '',
-        notify: true
-      },
-
-      /**
-       *  The `title` attribute sets a short description of an image. (It's not rendered visually by default.)
-       *
-       * @attribute title
-       * @type string
-       * @default ''
-       */
-
-      title: {
-        type: String,
-        value: '',
-        notify: true
-      },
-
-      /**
-       *  The `desc` attribute sets a long description of an image. (It's not rendered visually by default.)
-       *
-       * @attribute desc
-       * @type string
-       * @default ''
-       */
-
-      desc: {
-        type: String,
-        value: '',
-        notify: true
-      },
-
-      /**
-       *  Unique identifier for clipPath tag to deal with another intance of `<image-mask>` on the page
-       *
-       * @attribute maskId
-       * @type string
-       * @default ''
-       */
-
-      maskId: {
-        type: String,
-        computed: 'randomId(shape)',
-        notify: true
-      }
-
-    },
-
-    randomId: function(shape) {
-      return shape + '-' + Math.random().toString(36).substr(2, 4);
-    },
-
-    getViewBox: function(size) {
-      return ['0', '0', size, size].join(' ');
-    },
-
-    getClipPath: function(maskId) {
-      return 'url(#' + maskId + ')';
-    },
-
-    // Fires when the `<image-mask>` has been fully prepared
-    ready: function() {
-      // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
-      if (!this.href) {
-        var wrapper = this.$.link;
-        wrapper.outerHTML = wrapper.innerHTML;
-      }
-
-      this.shapes = {};
-      this.set('shapes.' + this.shape, true);
-    }
-  });
 </script>
