@@ -23,7 +23,7 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 1. Import Web Components' polyfill:
 
     ```html
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.7/webcomponents.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents.min.js"></script>
     ```
 
 2. Import Custom Element:
