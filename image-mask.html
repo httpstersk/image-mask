@@ -9,7 +9,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
-@version 1.0.0
+@version 1.0.1
 @homepage https://github.com/hejty/image-mask
 -->
 
@@ -32,8 +32,8 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         </clipPath>
       </defs>
 
-      <a xlink:href$="{{href}}" id="link" xlink:title$="{{title}}">
-        <image clip-path$="{{getClipPath(maskId)}}" height="100%" width="100%" xlink:href$="{{src}}" preserveAspectRatio="xMidYMid slice" />
+      <a id="link" xlink:title$="{{title}}">
+        <image class$="{{maskId}}" clip-path$="{{getClipPath(maskId)}}" height="100%" width="100%" preserveAspectRatio="xMidYMid slice" />
       </a>
     </svg>
 
@@ -106,7 +106,6 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
         href: {
           type: String,
-          value: '',
           notify: true
         },
 
@@ -159,7 +158,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
       },
 
       getViewBox: function(size) {
-        return ['0', '0', size, size].join(' ');
+        return [0, 0, size, size].join(' ');
       },
 
       getClipPath: function(maskId) {
@@ -206,12 +205,21 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         }
       },
 
+      _setAttrNS: function(element, attr) {
+        element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', attr);
+      },
+
       // Fires when the `<image-mask>` has been fully prepared
       ready: function() {
-        // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
+        var wrapper = this.$.link;
+        var image = this.$$('.' + this.maskId);
+        this._setAttrNS(image, this.src)
+
         if (!this.href) {
-          var wrapper = this.$.link;
+          // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
           wrapper.outerHTML = wrapper.innerHTML;
+        } else {
+          this._setAttrNS(wrapper, this.href);
         }
       }
     });
