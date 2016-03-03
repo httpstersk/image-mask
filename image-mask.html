@@ -9,7 +9,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
-@version 1.0.1
+@version 1.0.2
 @homepage https://github.com/hejty/image-mask
 -->
 
@@ -93,7 +93,8 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
           type: String,
           value: 'http://placehold.it/320',
           notify: true,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          observer: 'scrChanged'
         },
 
         /**
@@ -213,7 +214,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
       ready: function() {
         var wrapper = this.$.link;
         var image = this.$$('.' + this.maskId);
-        this._setAttrNS(image, this.src)
+        this._setAttrNS(image, this.src);
 
         if (!this.href) {
           // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
@@ -221,6 +222,11 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         } else {
           this._setAttrNS(wrapper, this.href);
         }
+      },
+
+      scrChanged: function(newValue, oldValue) {
+        var image = this.$$('.' + this.maskId);
+        this._setAttrNS(image, newValue);
       }
     });
 
