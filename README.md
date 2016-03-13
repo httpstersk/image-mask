@@ -42,7 +42,7 @@ Or [download as ZIP](https://github.com/hejty/image-mask/archive/master.zip).
 
 Attribute       | Options                                                                                                       | Default                      | Description
 ---             | ---                                                                                                           | ---                          | ---
-`shape`         | `circle`, `triangle`, `square`, `hexagon`, `octagon`, `star`, `rhombus`, `parallelogram`, `plus`              | `circle`                     | The `shape` attribute sets a masking shape
+`shape`         | `circle`, `triangle`, `square`, `hexagon`, `octagon`, `star`, `rhombus`, `parallelogram`, `plus`, `squircle`  | `circle`                     | The `shape` attribute sets a masking shape
 `size`          | *int*                                                                                                         | `320`                        | The `size` attribute sets a size of an element
     `src`           | *string*                                                                                                  | `http://placehold.it/320`    | The `src` attribute defines a path to an image that will be masked
 `href`          | *string*                                                                                                      | `-`                          | The `href` attribute sets the target URL

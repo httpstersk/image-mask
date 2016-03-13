@@ -9,7 +9,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
-@version 1.0.2
+@version 1.0.3
 @homepage https://github.com/hejty/image-mask
 -->
 
@@ -202,6 +202,10 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
           case 'plus':
             this.path = 'M 0 0.33, 0.33 0.33, 0.33 0, 0.66 0, 0.66 0.33, 1 0.33, 1 0.66, 0.66 0.66, 0.66 1, 0.33 1, 0.33 0.66, 0 0.66 z';
+            break;
+
+          case 'squircle':
+            this.path = 'M 0.5, 0 C 0.1, 0 0, 0.1 0, 0.5 0, 0.9 0.1, 1 0.5, 1 0.9, 1 1, 0.9 1, 0.5 1, 0.1 0.9, 0 0.5, 0 Z';
             break;
         }
       },
