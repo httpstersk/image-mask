@@ -9,7 +9,7 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
 
 @element image-mask
 @blurb A Polymer element for masking the images with basic (and some extraordinary) geometric shapes
-@version 1.0.3
+@version 1.1.0
 @homepage https://github.com/hejty/image-mask
 -->
 
@@ -214,6 +214,17 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         element.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', attr);
       },
 
+      _unWrap: function(wrapper) {
+        var fragment = document.createDocumentFragment();
+
+        while (wrapper.firstChild) {
+          var child = wrapper.removeChild(wrapper.firstChild);
+          fragment.appendChild(child);
+        }
+
+        wrapper.parentNode.replaceChild(fragment, wrapper);
+      },
+
       // Fires when the `<image-mask>` has been fully prepared
       ready: function() {
         var wrapper = this.$.link;
@@ -221,8 +232,8 @@ A Polymer element for masking the images with basic (and some extraordinary) geo
         this._setAttrNS(image, this.src);
 
         if (!this.href) {
-          // Unwrap/Remove `<a>` tag, if an `href` attribute is not defined
-          wrapper.outerHTML = wrapper.innerHTML;
+          // Remove/unwrap `<a>` tag, if an `href` attribute is not defined
+          this._unWrap(wrapper);
         } else {
           this._setAttrNS(wrapper, this.href);
         }
