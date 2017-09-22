@@ -9,12 +9,25 @@
 [Check it live!](http://hejty.github.io/demos/image-mask/)
 
 
+## Install
+
+1. Install from npm registry:
+
+    ```sh
+    npm install polymer-image-mask
+    ```
+
 ## Usage
 
-1. Import Custom Element as a module:
+1. Import Custom Element as a script with type `module` or `ES` module:
 
     ```html
     <script src="image-mask.js" type="module"></script>
+    ```
+
+
+    ```js
+    import { ImageMask } from 'polymer-image-mask';
     ```
 
 2. Start using it!
@@ -41,11 +54,11 @@ Attribute       | Description                                                   
 
 ## Contributing
 
-1. Fork it
+1. Fork it 🍴
 2. Create your feature branch: `git checkout -b my-freaking-cool-feature`
 3. Commit your changes: `git commit -m 'Add some freaking cool feature'`
 4. Push to the branch: `git push origin my-freaking-cool-feature`
-5. Submit a pull request
+5. Submit a pull request ☝️
 
 ## History
 

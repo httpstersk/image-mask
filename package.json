@@ -1,10 +1,8 @@
 {
-    "name": "image-mask",
+    "name": "polymer-image-mask",
     "version": "3.0.0",
     "homepage": "https://github.com/hejty/image-mask",
-    "authors": [
-        "Lubos Belak"
-    ],
+    "authors": ["Lubos Belak"],
     "description": "A Polymer element for masking the images with basic (and some extraordinary) geometric shapes",
     "main": "image-mask.js",
     "license": "MIT",
